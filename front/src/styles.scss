@@ -11,6 +11,37 @@ h1 {
 
 button {
   padding: 0.5em 1em;
+  border: 0.1em solid #eee;
+  background-color: #eee;
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &:hover {
+      border-color: #ddd;
+      background-color: #ddd;
+    }
+
+    &:active {
+      border-color: #ccc;
+      background-color: #ccc;
+    }
+
+    &.primary {
+      color: #fff;
+      border-color: #333;
+      background-color: #333;
+      &:hover {
+        border-color: #444;
+        background-color: #444;
+      }
+
+      &:active {
+        border-color: #555;
+        background-color: #555;
+      }
+    }
+  }
 }
 
 main {
