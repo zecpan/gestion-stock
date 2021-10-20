@@ -59,3 +59,24 @@ main {
   max-width: 50em;
   margin: 0 auto;
 }
+
+form {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  max-width: 25em;
+
+  label {
+    margin-bottom: 1em;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5em 1em;
+    border: 0.1 solid #aaa;
+  }
+
+  button {
+    margin-top: 2em;
+  }
+}
