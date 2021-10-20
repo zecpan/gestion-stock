@@ -14,6 +14,9 @@ import { BodyComponent } from './body/body.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    HeaderComponent,FooterComponent,BodyComponent
   ]
 })
 export class LayoutModule { }
