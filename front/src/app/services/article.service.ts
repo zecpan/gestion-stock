@@ -13,7 +13,7 @@ export class ArticleService {
   }
 
   remove(selectedArticles: Set<Article>) {
-    this.articles = this.articles.filter((a) => selectedArticles.has(a));
+    this.articles = this.articles.filter((a) => !selectedArticles.has(a));
     this.save();
   }
 
