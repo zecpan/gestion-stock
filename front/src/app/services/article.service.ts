@@ -12,6 +12,11 @@ export class ArticleService {
     this.save();
   }
 
+  remove(selectedArticles: Set<Article>) {
+    this.articles = this.articles.filter((a) => selectedArticles.has(a));
+    this.save();
+  }
+
   restore(): Article[] {
     const str = localStorage.getItem('articles');
     if (!str) {

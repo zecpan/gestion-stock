@@ -12,6 +12,12 @@ export class StockComponent {
 
   constructor(public articleService: ArticleService) {}
 
+  remove() {
+    console.log('remove');
+    this.articleService.remove(this.selectedArticles);
+    this.selectedArticles.clear();
+  }
+
   toggle(a: Article) {
     console.log('toggle', a);
     if (this.selectedArticles.has(a)) {
