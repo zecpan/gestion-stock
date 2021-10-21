@@ -46,4 +46,27 @@ export class HttpArticleService extends ArticleService {
       },
     });
   }
+
+  remove(selectedArticles: Set<Article>) {
+    super.remove(selectedArticles);
+    const ids = [...selectedArticles].map((a) => a.id);
+    this.http
+      .delete<void>(url, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ids),
+      })
+      .subscribe({
+        next: () => {
+          this.refresh();
+        },
+        complete: () => {
+          console.log('complete');
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+      });
+  }
 }

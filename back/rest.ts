@@ -5,7 +5,7 @@ export function rest<T extends Resource>(resourceName: string) {
   function generateId() {
     return Date.now() + "_" + Math.floor(Math.random() * 1e6);
   }
-  const resourceList: T[] = [
+  let resourceList: T[] = [
     { id: "a1", name: "Tournevis", price: 1.23, qty: 234 },
     { id: "a2", name: "Pelle", price: 2.4, qty: 120 },
     { id: "a3", name: "Pince", price: 3, qty: 5 },
@@ -26,5 +26,13 @@ export function rest<T extends Resource>(resourceName: string) {
     resourceList.push(resource);
     res.status(201).json(resource);
   });
+
+  app.delete("/", (req, res) => {
+    const ids = req.body as string[];
+    console.log("ids: ", ids);
+    resourceList = resourceList.filter((r) => !ids.includes(r.id));
+    res.status(204).end();
+  });
+
   return app;
 }
