@@ -3,7 +3,7 @@
   <div>
     <nav>
       <button routerLink="add">Ajouter</button>
-      <button>Supprimer</button>
+      <button *ngIF="selectedArticles.size">Supprimer</button>
     </nav>
     <table aria-label="Liste des articles">
       <thead>
