@@ -9,5 +9,9 @@ export class HttpArticleService extends ArticleService {
   constructor(private http: HttpClient) {
     super();
     console.log('http-article service');
+    this.refresh();
+  }
+  refresh() {
+    this.http.get('http://localhost:3000/api/articles');
   }
 }
