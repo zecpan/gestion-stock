@@ -11,6 +11,7 @@ const dir = ".";
 //cors
 app.use(cors());
 
+//access log
 app.use(morgan("tiny"));
 
 app.use(express.static(dir));
