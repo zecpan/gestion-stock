@@ -12,8 +12,6 @@ export class ArticleService {
     { name: 'Marteau', price: 5, qty: 1200 },
   ];
 
-  constructor() {}
-
   add(article: Article) {
     this.articles.push(article);
   }
