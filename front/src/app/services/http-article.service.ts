@@ -11,6 +11,7 @@ export class HttpArticleService extends ArticleService {
     super();
     console.log('http article service instantiated.');
     this.refresh();
+    this.save();
   }
   refresh() {
     console.log('refresh');
