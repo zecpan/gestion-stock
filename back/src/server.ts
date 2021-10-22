@@ -6,7 +6,7 @@ import serveIndex from "serve-index";
 import { api } from "./api";
 
 const app = express();
-const port = 3000;
+const port = process.env.GESTION_STOCK_PORT || 3000;
 const dir = resolve("../front/dist/front");
 
 //cors
@@ -26,4 +26,6 @@ app.get("/*", (req, res) => {
   res.sendFile(resolve(dir, "index.html"));
 });
 
-app.listen(port, () => {});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});

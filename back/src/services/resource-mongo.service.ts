@@ -15,11 +15,12 @@ export class ResourceMongoService<T extends Resource> {
       .db()
       .collection(this.resourceName)
       .insertOne(resource);
-
+    console.log("result: ", result);
     return resource;
   }
 
   async removeBulk(ids: string[]): Promise<void> {
+    console.log("removeBulk");
     await client
       .db()
       .collection(this.resourceName)
@@ -33,13 +34,14 @@ export class ResourceMongoService<T extends Resource> {
       .find({})
       .toArray();
     const result = resourceList.map((d) => this.reformatId(d));
-
+    console.log("resourceList: ", resourceList);
     return result;
   }
 
   async start(): Promise<void> {
     await client.connect();
     const databases = await client.db().admin().listDatabases();
+    console.log("databases: ", databases);
   }
 
   async stop() {

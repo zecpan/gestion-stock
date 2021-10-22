@@ -29,6 +29,7 @@ export function rest<T extends Resource>(resourceName: string) {
     (async () => {
       try {
         const resource = req.body as T;
+        console.log("resource: ", resource);
         const result = await resourceService.add(resource);
         res.status(201).json(result);
       } catch (err) {
@@ -43,7 +44,9 @@ export function rest<T extends Resource>(resourceName: string) {
         const ids = req.body as string[];
         await resourceService.removeBulk(ids);
         res.status(204).end();
-      } catch (err) {}
+      } catch (err) {
+        console.log("err: ", err);
+      }
     })();
   });
 
