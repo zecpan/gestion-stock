@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ArticleService } from './article.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Article } from '../interfaces/article';
-import { environment } from 'src/environments/environment';
+import { ArticleService } from './article.service';
 
-const url = environment.backEndDomainUrl + '/api/acticles';
+const url = '/api/articles';
 
 @Injectable({
   providedIn: 'root',
