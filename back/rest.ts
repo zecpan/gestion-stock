@@ -1,36 +1,32 @@
 import express from "express";
 import { Resource } from "./interfaces/Resource";
+import { ResourceService } from "./resource.service";
 
 export function rest<T extends Resource>(resourceName: string) {
   function generateId() {
     return Date.now() + "_" + Math.floor(Math.random() * 1e6);
   }
-  let resourceList: T[] = [
-    { id: "a1", name: "Tournevis", price: 1.23, qty: 234 },
-    { id: "a2", name: "Pelle", price: 2.4, qty: 120 },
-    { id: "a3", name: "Pince", price: 3, qty: 5 },
-    { id: "a4", name: "Marteau", price: 5, qty: 1200 },
-  ] as unknown[] as T[];
   const app = express.Router();
+  const resourceService = new ResourceService();
 
   app.use(express.json());
 
   app.get("/", (req, res) => {
+    const resourceList = resourceService.retrieveAll();
     res.json(resourceList);
   });
 
   app.post("/", (req, res) => {
     const resource = req.body as T;
     console.log("resource: ", resource);
-    resource.id = generateId();
-    resourceList.push(resource);
-    res.status(201).json(resource);
+    const result = resourceService.add(resource);
+    res.status(201).json(result);
   });
 
   app.delete("/", (req, res) => {
     const ids = req.body as string[];
     console.log("ids: ", ids);
-    resourceList = resourceList.filter((r) => !ids.includes(r.id));
+    resourceService.removeBulk(ids);
     res.status(204).end();
   });
 
