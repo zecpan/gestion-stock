@@ -1,1 +1,6 @@
-[{"id":"a1","name":"Tournevis","price":1.23,"qty":234},{"id":"a2","name":"Pelle","price":2.4,"qty":120},{"id":"a3","name":"Marteau","price":3,"qty":5},{"id":"a4","name":"Pince","price":235,"qty":1200}]
+[
+  { "id": "a1", "name": "file Tournevis", "price": 1.23, "qty": 234 },
+  { "id": "a2", "name": "Pelle", "price": 2.4, "qty": 120 },
+  { "id": "a3", "name": "Marteau", "price": 3, "qty": 5 },
+  { "id": "a4", "name": "Pince", "price": 235, "qty": 1200 }
+]
