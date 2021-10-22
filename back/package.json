@@ -5,7 +5,9 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon"
+    "start": "npx nodemon",
+    "start:prod": "node build/back/src/server.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
