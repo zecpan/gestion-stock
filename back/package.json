@@ -8,6 +8,7 @@
     "start": "npx nodemon",
     "start:prod": "node build/back/src/server.js",
     "lint": "eslint .",
+    "e2e":"cypress open",
     "build": "tsc"
   },
   "keywords": [],
