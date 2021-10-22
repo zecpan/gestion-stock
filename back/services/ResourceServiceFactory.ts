@@ -2,6 +2,7 @@ import { ResourceFileService } from "./resource-file.service";
 import { ResourceService } from "./resource.service";
 import { AbstractResourceService } from "./AbstractResourceService";
 import { Resource } from "../interfaces/Resource";
+import { ResourceMongoService } from "./resource-mongo.service";
 
 export class ResourceServiceFactory {
   static get<T extends Resource>(
@@ -14,7 +15,11 @@ export class ResourceServiceFactory {
       case "file":
         return new ResourceFileService<T>(resourceName);
       case "mongodb":
-        return new ResourceService<T>();
+        return new ResourceMongoService<T>(resourceName);
+      default:
+        throw new Error(
+          "Bad type: should be ram, file or mongoDb. Actual value = " + type
+        );
     }
   }
 }
