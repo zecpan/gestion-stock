@@ -18,7 +18,6 @@ export class AddComponent {
   constructor(private router: Router, private articleService: ArticleService) {}
 
   submit() {
-    console.log('submit');
     this.articleService.add(this.f.value);
     this.router.navigateByUrl('/stock');
   }

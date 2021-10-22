@@ -1,4 +1,3 @@
-console.log("About to start the server...");
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
@@ -27,6 +26,4 @@ app.get("/*", (req, res) => {
   res.sendFile(resolve(dir, "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+app.listen(port, () => {});

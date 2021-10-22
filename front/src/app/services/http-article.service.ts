@@ -11,24 +11,18 @@ const url = '/api/articles';
 export class HttpArticleService extends ArticleService {
   constructor(private http: HttpClient) {
     super();
-    console.log('http article service instantiated.');
+
     this.refresh();
     this.save();
   }
   refresh() {
-    console.log('refresh');
     this.http.get<Article[]>(url).subscribe({
       next: (articles) => {
-        console.log('articles: ', articles);
         this.articles = articles;
         this.save();
       },
-      complete: () => {
-        console.log('complete');
-      },
-      error: (err) => {
-        console.log('err: ', err);
-      },
+      complete: () => {},
+      error: (err) => {},
     });
   }
 
@@ -38,12 +32,8 @@ export class HttpArticleService extends ArticleService {
       next: () => {
         this.refresh();
       },
-      complete: () => {
-        console.log('complete');
-      },
-      error: (err) => {
-        console.log('err: ', err);
-      },
+      complete: () => {},
+      error: (err) => {},
     });
   }
 
@@ -61,12 +51,8 @@ export class HttpArticleService extends ArticleService {
         next: () => {
           this.refresh();
         },
-        complete: () => {
-          console.log('complete');
-        },
-        error: (err) => {
-          console.log('err: ', err);
-        },
+        complete: () => {},
+        error: (err) => {},
       });
   }
 }

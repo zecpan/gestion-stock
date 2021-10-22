@@ -4,9 +4,7 @@ import { AfterViewInit, Directive, ElementRef } from '@angular/core';
   selector: '[appAutofocus]',
 })
 export class AutofocusDirective implements AfterViewInit {
-  constructor(private elt: ElementRef<HTMLInputElement>) {
-    console.log('instatiate autoFocus directive');
-  }
+  constructor(private elt: ElementRef<HTMLInputElement>) {}
   ngAfterViewInit(): void {
     this.elt.nativeElement.select();
   }

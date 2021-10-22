@@ -1,4 +1,4 @@
-import { Article } from "../front/src/app/interfaces/article";
+import { Article } from "../../front/src/app/interfaces/article";
 import express from "express";
 import { rest } from "./rest";
 
