@@ -1,33 +1,50 @@
 import express from "express";
 import { Resource } from "./interfaces/Resource";
-import { ResourceService } from "./resource.service";
+import { ResourceFileService } from "./services/resource-file.service";
 
 export function rest<T extends Resource>(resourceName: string) {
   function generateId() {
     return Date.now() + "_" + Math.floor(Math.random() * 1e6);
   }
   const app = express.Router();
-  const resourceService = new ResourceService();
+  const resourceService = new ResourceFileService(resourceName);
 
   app.use(express.json());
 
   app.get("/", (req, res) => {
-    const resourceList = resourceService.retrieveAll();
-    res.json(resourceList);
+    (async () => {
+      try {
+        const resourceList = await resourceService.retrieveAll();
+        res.json(resourceList);
+      } catch (err) {
+        res.status(500).end();
+      }
+    })();
   });
 
   app.post("/", (req, res) => {
-    const resource = req.body as T;
-    console.log("resource: ", resource);
-    const result = resourceService.add(resource);
-    res.status(201).json(result);
+    (async () => {
+      try {
+        const resource = req.body as T;
+        console.log("resource: ", resource);
+        const result = await resourceService.add(resource);
+        res.status(201).json(result);
+      } catch (err) {
+        res.status(500).end();
+      }
+    })();
   });
 
   app.delete("/", (req, res) => {
-    const ids = req.body as string[];
-    console.log("ids: ", ids);
-    resourceService.removeBulk(ids);
-    res.status(204).end();
+    (async () => {
+      try {
+        const ids = req.body as string[];
+        await resourceService.removeBulk(ids);
+        res.status(204).end();
+      } catch (err) {
+        console.log("err: ", err);
+      }
+    })();
   });
 
   return app;
